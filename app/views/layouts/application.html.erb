@@ -12,12 +12,16 @@
   <body class="has-navbar-fixed-top">
     <%= render 'layouts/nav' %>
 
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
-
     <div class="section">
       <div class="container">
+        <% if flash[:error] %>
+          <div class="notification is-danger"><%= flash[:error] %></div>
+        <% end %>
+
+        <% if flash[:notice] %>
+          <div class="notification is-info"><%= flash[:notice] %></div>
+        <% end %>
+
         <%= yield %>
       </div>
     </div>

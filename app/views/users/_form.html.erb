@@ -1,6 +1,6 @@
 <%= form_for @user do |f| %>
 
-  <%= render 'field',
+  <%= render 'shared/field',
     f: f,
     field_type: :text_field,
     key: :name,
@@ -8,7 +8,7 @@
     icon: 'fas fa-user'
   %>
 
-  <%= render 'field',
+  <%= render 'shared/field',
     f: f,
     field_type: :email_field,
     key: :email,
@@ -16,14 +16,14 @@
     icon: 'fas fa-envelope'
   %>
 
-  <%= render 'field',
+  <%= render 'shared/field',
     f: f,
     field_type: :password_field,
     key: :password,
     icon: 'fas fa-lock'
   %>
 
-  <%= render 'field',
+  <%= render 'shared/field',
     f: f,
     field_type: :password_field,
     key: :password_confirmation,
