@@ -9,6 +9,5 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :tickets, except: [:show]
-  resources :tags
-
+  resources :tags, except: [:show]
 end
