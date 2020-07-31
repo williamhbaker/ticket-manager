@@ -1,0 +1,15 @@
+<%= render 'shared/heading', title_text: 'Tickets' %>
+
+
+<div class="content is-large">
+  <%= render 'shared/tickets_table', tickets: @tickets %>
+
+  <% if logged_in? %>
+    <a href="<%= new_ticket_path %>" class="button is-primary">
+      <span class="icon is-small">
+        <i class="fas fa-plus"></i>
+      </span>
+      <span>New Ticket</span>
+    </a>
+  <% end %>
+</div>

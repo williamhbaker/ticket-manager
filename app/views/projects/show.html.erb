@@ -3,17 +3,12 @@
 <div class="content is-large">
   <p><%= @project.description %></p>
 
-  <% if logged_in? %>
-    <div class="field is-grouped mb-6">
-      <div class="control">
-        <%= link_to 'Edit', edit_project_path(@project), class: 'button is-link' %>
-      </div>
-      <div class="control">
-        <%= link_to 'Delete', project_path(@project), method: 'delete', class: 'button is-danger' %>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'shared/edit_delete_buttons',
+    edit_path: edit_project_path(@project),
+    delete_path: project_path(@project)
+  %>
 
-  <h6>Tickets</h6>
+  <h6 class="mt-6">Tickets</h6>
 
+  <%= render 'shared/tickets_table', tickets: @project.tickets %>
 </div>

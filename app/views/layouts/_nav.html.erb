@@ -9,33 +9,23 @@
 
   <div class="navbar-menu">
     <div class="navbar-start">
-      <a href="<%= projects_path %>" class="navbar-item">
-        <span class="icon">
-          <i class="fas fa-project-diagram"></i>
-        </span>
-        <span>
-          Projects
-        </span>
-      </a>
+      <%= render 'layouts/nav_link',
+        path: projects_path,
+        icon: "fas fa-project-diagram",
+        link_text: "Projects"
+      %>
 
-      <a href="" class="navbar-item">
-        <span class="icon">
-          <i class="fas fa-ticket-alt"></i>
-        </span>
-        <span>
-          Tickets
-        </span>
-      </a>
+      <%= render 'layouts/nav_link',
+        path: tickets_path,
+        icon: "fas fa-ticket-alt",
+        link_text: "Tickets"
+      %>
 
-
-      <a href="" class="navbar-item">
-        <span class="icon">
-          <i class="fas fa-tags"></i>
-        </span>
-        <span>
-          Tags
-        </span>
-      </a>
+      <%= render 'layouts/nav_link',
+        path: tags_path,
+        icon: "fas fa-tags",
+        link_text: "Tags"
+      %>
     </div>
 
     <div class="navbar-end">
