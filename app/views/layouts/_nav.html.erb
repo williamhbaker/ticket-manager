@@ -31,9 +31,12 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+
+
+        <% if !logged_in? %>
           <a href="/login" class="button is-light">
             <span class="icon">
-              <i class="fab fa-twitter"></i>
+              <i class="fas fa-sign-in-alt"></i>
             </span>
             <span>
               Log In
@@ -41,12 +44,24 @@
           </a>
           <a href="/register" class="button is-link">
             <span class="icon">
-              <i class="fab fa-twitter"></i>
+              <i class="fas fa-user-plus"></i>
             </span>
             <span>
               Sign Up
             </span>
           </a>
+        <% else %>
+          <a href="/logout" class="button is-link">
+            <span class="icon">
+              <i class="fas fa-sign-out-alt"></i>
+            </span>
+            <span>
+              Sign Out
+            </span>
+          </a>
+        <% end %>
+
+
         </div>
       </div>
     </div>
