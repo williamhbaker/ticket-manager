@@ -22,9 +22,11 @@
   </tbody>
 </table>
 
-<a href="<%= new_project_path %>" class="button is-primary">
-  <span class="icon is-small">
-    <i class="fas fa-plus"></i>
-  </span>
-  <span>New Project</span>
-</a>
+<% if logged_in? %>
+  <a href="<%= new_project_path %>" class="button is-primary">
+    <span class="icon is-small">
+      <i class="fas fa-plus"></i>
+    </span>
+    <span>New Project</span>
+  </a>
+<% end %>
