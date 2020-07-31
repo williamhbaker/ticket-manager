@@ -3,46 +3,12 @@
 <div class="content is-large">
   <p><%= @project.description %></p>
 
-  <%= render 'edit_delete_buttons',
+  <%= render 'shared/edit_delete_buttons',
     edit_path: edit_project_path(@project),
     delete_path: project_path(@project)
   %>
 
   <h6 class="mt-6">Tickets</h6>
 
-  <table class="table is-bordered is-striped is-fullwidth is-hoverable">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Assignee</th>
-        <th>Status</th>
-        <th>Tags</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @project.tickets.each do |ticket| %>
-        <tr>
-          <td>
-            <%= ticket.name %>
-          </td>
-          <td>
-            assignee
-          </td>
-          <td>
-            <%= ticket.status.capitalize %>
-          </td>
-          <td>
-
-          </td>
-          <td>
-            <%= render 'edit_delete_buttons',
-              edit_path: edit_ticket_path(ticket),
-              delete_path: ticket_path(ticket)
-            %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render 'shared/tickets_table', tickets: @project.tickets %>
 </div>

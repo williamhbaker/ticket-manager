@@ -1,0 +1,55 @@
+<%= form_for obj do |f| %>
+
+  <div class="field">
+    <%= f.label :project_id, class: "label" %>
+    <div class="control">
+      <div class="select">
+        <%= f.select :project_id, options_from_collection_for_select(@projects, 'id', 'name') %>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'shared/field',
+    f: f,
+    field_type: :text_field,
+    key: :name,
+    placeholder: 'Ticket Name',
+    obj: obj
+  %>
+
+  <div class="field">
+    <%= f.label :body, class: "label" %>
+
+    <div class="control has-icons-right">
+      <%= f.text_area :body, class: 'textarea', placeholder: 'Ticket body' %>
+      <% if obj.errors.messages[:body].size > 0 %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <% end %>
+    </div>
+
+    <% obj.errors.messages[:body].uniq.each do |msg| %>
+      <p class="help is-danger"><%= "#{:body.to_s.capitalize} #{msg}" %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status, class: "label" %>
+    <div class="select">
+      <div class="control">
+        <%= f.select :status, options_for_select(['new','blocked', 'in_progress', 'fixed']) %>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="field is-grouped">
+    <div class="control">
+      <%= f.submit 'Submit', class: 'button is-link' %>
+    </div>
+    <div class="control">
+      <button type="button" onclick="window.location.href='<%= root_path %>'" class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+
+<% end %>
