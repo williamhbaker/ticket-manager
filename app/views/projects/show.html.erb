@@ -1,0 +1,17 @@
+<%= render 'shared/heading', title_text: "Project Details: #{@project.name}" %>
+
+<div class="content is-large">
+  <p><%= @project.description %></p>
+
+  <div class="field is-grouped mb-6">
+    <div class="control">
+      <%= link_to 'Edit', edit_project_path(@project), class: 'button is-link' %>
+    </div>
+    <div class="control">
+      <%= link_to 'Delete', project_path(@project), method: 'delete', class: 'button is-danger' %>
+    </div>
+  </div>
+
+  <h6>Tickets</h6>
+
+</div>
