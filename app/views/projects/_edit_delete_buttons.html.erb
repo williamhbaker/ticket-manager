@@ -1,0 +1,10 @@
+  <% if logged_in? %>
+    <div class="field is-grouped">
+      <div class="control">
+        <%= link_to 'Edit', edit_path, class: 'button is-link' %>
+      </div>
+      <div class="control">
+        <%= link_to 'Delete', delete_path, method: 'delete', class: 'button is-danger' %>
+      </div>
+    </div>
+  <% end %>

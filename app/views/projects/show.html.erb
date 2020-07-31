@@ -3,17 +3,46 @@
 <div class="content is-large">
   <p><%= @project.description %></p>
 
-  <% if logged_in? %>
-    <div class="field is-grouped mb-6">
-      <div class="control">
-        <%= link_to 'Edit', edit_project_path(@project), class: 'button is-link' %>
-      </div>
-      <div class="control">
-        <%= link_to 'Delete', project_path(@project), method: 'delete', class: 'button is-danger' %>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'edit_delete_buttons',
+    edit_path: edit_project_path(@project),
+    delete_path: project_path(@project)
+  %>
 
-  <h6>Tickets</h6>
+  <h6 class="mt-6">Tickets</h6>
 
+  <table class="table is-bordered is-striped is-fullwidth is-hoverable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Assignee</th>
+        <th>Status</th>
+        <th>Tags</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project.tickets.each do |ticket| %>
+        <tr>
+          <td>
+            <%= ticket.name %>
+          </td>
+          <td>
+            assignee
+          </td>
+          <td>
+            <%= ticket.status.capitalize %>
+          </td>
+          <td>
+
+          </td>
+          <td>
+            <%= render 'edit_delete_buttons',
+              edit_path: edit_ticket_path(ticket),
+              delete_path: ticket_path(ticket)
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
