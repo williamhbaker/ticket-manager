@@ -1,0 +1,37 @@
+<%= form_for obj do |f| %>
+
+  <%= render 'shared/field',
+    f: f,
+    field_type: :text_field,
+    key: :name,
+    placeholder: 'Project Name',
+    obj: obj
+  %>
+
+  <div class="field">
+    <%= f.label :description, class: "label" %>
+
+    <div class="control has-icons-right">
+      <%= f.text_area :description, class: 'textarea', placeholder: 'Project Description' %>
+      <% if obj.errors.messages[:description].size > 0 %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <% end %>
+    </div>
+
+    <% obj.errors.messages[:description].uniq.each do |msg| %>
+      <p class="help is-danger"><%= "#{:description.to_s.capitalize} #{msg}" %></p>
+    <% end %>
+  </div>
+ 
+  <div class="field is-grouped">
+    <div class="control">
+      <%= f.submit 'Submit', class: 'button is-link' %>
+    </div>
+    <div class="control">
+      <button type="button" onclick="window.location.href='<%= root_path %>'" class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+
+<% end %>

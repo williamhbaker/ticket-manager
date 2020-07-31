@@ -1,23 +1,23 @@
 <% placeholder ||= '' %>
+<% icon ||= '' %>
+<% input_class = "input #{obj.errors.messages[key].size > 0 && 'is-danger'}" %>
 
 <div class="field">
   <%= f.label key, class: "label" %>
 
-  <% input_class = "input #{@user.errors.messages[key].size > 0 && 'is-danger'}" %>
-
-  <div class="control has-icons-left has-icons-right">
+  <div class="<%= "control has-icons-right #{icon}" %>">
     <%= f.send(field_type, key, class: input_class, placeholder: placeholder) %>
     <span class="icon is-small is-left">
       <i class="<%= icon %>"></i>
     </span>
-    <% if @user.errors.messages[key].size > 0 %>
+    <% if obj.errors.messages[key].size > 0 %>
       <span class="icon is-small is-right">
         <i class="fas fa-exclamation-triangle"></i>
       </span>
     <% end %>
   </div>
 
-  <% @user.errors.messages[key].uniq.each do |msg| %>
+  <% obj.errors.messages[key].uniq.each do |msg| %>
     <p class="help is-danger"><%= "#{key.to_s.capitalize} #{msg}" %></p>
   <% end %>
 </div>
