@@ -7,9 +7,6 @@ class TicketsController < ApplicationController
     @tickets = Ticket.all
   end
 
-  def show
-  end
-
   def edit
   end
 

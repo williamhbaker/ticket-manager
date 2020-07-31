@@ -1,0 +1,13 @@
+<%= form_for obj do |f| %>
+
+  <%= render 'shared/field',
+    f: f,
+    field_type: :text_field,
+    key: :name,
+    placeholder: 'Tag Name',
+    obj: obj
+  %>
+
+  <%= render 'shared/form_submit_controls', f: f %>
+ 
+<% end %>

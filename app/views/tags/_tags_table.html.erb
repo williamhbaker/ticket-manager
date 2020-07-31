@@ -1,0 +1,28 @@
+<table class="table is-bordered is-striped is-fullwidth is-hoverable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class="has-text-centered">Tickets</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tags.each do |tag| %>
+      <tr>
+        <td>
+          <%= tag.name %>
+        </td>
+        <td class="has-text-centered">
+          <%= tag.tickets.size %>
+        </td>
+
+        <td>
+          <%= render 'shared/edit_delete_buttons',
+            edit_path: edit_tag_path(tag),
+            delete_path: tag_path(tag)
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

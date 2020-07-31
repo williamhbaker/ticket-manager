@@ -25,13 +25,6 @@
     <% end %>
   </div>
  
-  <div class="field is-grouped">
-    <div class="control">
-      <%= f.submit 'Submit', class: 'button is-link' %>
-    </div>
-    <div class="control">
-      <button type="button" onclick="window.location.href='<%= root_path %>'" class="button is-link is-light">Cancel</button>
-    </div>
-  </div>
+  <%= render 'shared/form_submit_controls', f: f %>
 
 <% end %>
