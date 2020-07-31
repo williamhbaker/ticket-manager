@@ -9,59 +9,75 @@
 
   <div class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a href="" class="navbar-item">
         <span class="icon">
-          <i class="fab fa-twitter"></i>
+          <i class="fas fa-project-diagram"></i>
         </span>
         <span>
-          Home
+          Projects
         </span>
       </a>
 
-      <a class="navbar-item">
+      <a  href="" class="navbar-item">
         <span class="icon">
-          <i class="fab fa-twitter"></i>
+          <i class="fas fa-ticket-alt"></i>
         </span>
         <span>
-          Home
+          Tickets
+        </span>
+      </a>
+
+
+      <a  href="" class="navbar-item">
+        <span class="icon">
+          <i class="fas fa-tags"></i>
+        </span>
+        <span>
+          Tags
         </span>
       </a>
     </div>
 
     <div class="navbar-end">
+
+      <% if logged_in? %>
+        <div class="navbar-item">
+          <span class="icon">
+            <i class="fas fa-info-circle"></i>
+          </span>
+          <span>Signed in as: <%= current_user.name %></span>
+        </div>
+      <% end %>
+
       <div class="navbar-item">
         <div class="buttons">
-
-
-        <% if !logged_in? %>
-          <a href="/login" class="button is-light">
-            <span class="icon">
-              <i class="fas fa-sign-in-alt"></i>
-            </span>
-            <span>
-              Log In
-            </span>
-          </a>
-          <a href="/register" class="button is-link">
-            <span class="icon">
-              <i class="fas fa-user-plus"></i>
-            </span>
-            <span>
-              Sign Up
-            </span>
-          </a>
-        <% else %>
-          <a href="/logout" class="button is-link">
-            <span class="icon">
-              <i class="fas fa-sign-out-alt"></i>
-            </span>
-            <span>
-              Sign Out
-            </span>
-          </a>
-        <% end %>
-
-
+          <% if !logged_in? %>
+            <a href="/login" class="button is-light">
+              <span class="icon">
+                <i class="fas fa-sign-in-alt"></i>
+              </span>
+              <span>
+                Log In
+              </span>
+            </a>
+            <a href="/register" class="button is-link">
+              <span class="icon">
+                <i class="fas fa-user-plus"></i>
+              </span>
+              <span>
+                Sign Up
+              </span>
+            </a>
+          <% else %>
+            <a href="/logout" class="button is-link">
+              <span class="icon">
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+              <span>
+                Sign Out
+              </span>
+            </a>
+          <% end %>
         </div>
       </div>
     </div>
