@@ -11,6 +11,7 @@ class Ticket < ApplicationRecord
   end
 
   belongs_to :project
+  belongs_to :user
 
   has_many :tags_tickets
   has_many :tags, through: :tags_tickets

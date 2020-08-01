@@ -1,0 +1,37 @@
+<%= render 'shared/heading', title_text: "Ticket Details: #{@ticket.name}" %>
+
+  <div class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Creator</p>
+        <p class="title"><%= @ticket.user && @ticket.user.name %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Status</p>
+        <p class="title"><%= format_status(@ticket.status) %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Assigned To</p>
+        <p class="title">tbd</p>
+      </div>
+    </div>
+  </div>
+
+<div class="content is-large">
+
+  <p><%= @ticket.body %></p>
+
+  <% if logged_in? %>
+    <%= render 'shared/edit_delete_buttons',
+      edit_path: edit_ticket_path(@ticket),
+      delete_path: ticket_path(@ticket)
+    %>
+  <% end %>
+
+  <p>Tags: <%= render 'shared/tag_list', tags: @ticket.tags %></p>
+  
+</div>
