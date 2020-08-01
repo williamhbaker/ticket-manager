@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Assignee</th>
+      <th>Assigned To</th>
       <th>Status</th>
       <th>Tags</th>
       <% if logged_in? %>
@@ -17,7 +17,7 @@
           <%= link_to ticket.name, ticket_path(ticket) %>
         </td>
         <td>
-          assignee
+          <%= ticket.assigned_to.name %>
         </td>
         <td>
           <%= format_status(ticket.status) %>
