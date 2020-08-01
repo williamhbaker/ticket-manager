@@ -3,7 +3,9 @@
     <tr>
       <th>Name</th>
       <th class="has-text-centered">Tickets</th>
-      <th></th>
+      <% if logged_in? %>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -16,12 +18,14 @@
           <%= tag.tickets.size %>
         </td>
 
-        <td>
-          <%= render 'shared/edit_delete_buttons',
-            edit_path: edit_tag_path(tag),
-            delete_path: tag_path(tag)
-          %>
-        </td>
+        <% if logged_in? %>
+          <td>
+            <%= render 'shared/edit_delete_buttons',
+              edit_path: edit_tag_path(tag),
+              delete_path: tag_path(tag)
+            %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

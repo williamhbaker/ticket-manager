@@ -4,7 +4,9 @@
     <%= f.label :project_id, class: "label" %>
     <div class="control">
       <div class="select">
-        <%= f.select :project_id, options_from_collection_for_select(@projects, 'id', 'name') %>
+        <%= f.select :project_id,
+          options_from_collection_for_select(@projects, 'id', 'name', obj.project_id)
+        %>
       </div>
     </div>
   </div>
@@ -38,16 +40,22 @@
     <%= f.label :status, class: "label" %>
     <div class="select">
       <div class="control">
-        <%= f.select :status, options_for_select(['new','blocked', 'in_progress', 'fixed']) %>
+        <%= f.select :status,
+          options_for_select(['new','blocked', 'in_progress', 'fixed'], obj.status)
+        %>
       </div>
     </div>
   </div>
 
   <div class="field">
     <%= f.label :tag_ids, class: "label" %>
-    <div class="select is-multiple" style="height: auto">
+    <div class="select is-multiple">
       <div class="control">
-        <%= f.select :tag_ids, options_from_collection_for_select(@tags, 'id', 'name'), {}, multiple: true %>
+        <%= f.select :tag_ids, 
+          options_from_collection_for_select(@tags, 'id', 'name', obj.tag_ids),
+          {},
+          multiple: true
+        %>
       </div>
     </div>
   </div>
