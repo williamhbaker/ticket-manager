@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :destroy, :edit, :update]
   before_action :set_projects, only: [:new, :create, :edit]
+  before_action :set_tags, only: [:new, :create, :edit]
   before_action :require_user, except: [:show, :index]
 
   def index
@@ -43,7 +44,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:project_id, :name, :body, :status)
+    params.require(:ticket).permit(:project_id, :name, :body, :status, tag_ids: [])
   end
 
   def set_ticket
@@ -52,5 +53,9 @@ class TicketsController < ApplicationController
 
   def set_projects
     @projects = Project.all
+  end
+
+  def set_tags
+    @tags = Tag.all
   end
 end

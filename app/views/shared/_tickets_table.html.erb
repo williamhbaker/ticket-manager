@@ -5,30 +5,34 @@
       <th>Assignee</th>
       <th>Status</th>
       <th>Tags</th>
-      <th></th>
+      <% if logged_in? %>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <% tickets.each do |ticket| %>
       <tr>
         <td>
-          <%= ticket.name %>
+          <%= link_to ticket.name, ticket_path(ticket) %>
         </td>
         <td>
           assignee
         </td>
         <td>
-          <%= ticket.status.capitalize %>
+          <%= format_status(ticket.status) %>
         </td>
         <td>
-
+          <%= render 'shared/tag_list', tags: ticket.tags %>
         </td>
-        <td>
-          <%= render 'shared/edit_delete_buttons',
-            edit_path: edit_ticket_path(ticket),
-            delete_path: ticket_path(ticket)
-          %>
-        </td>
+        <% if logged_in? %>
+          <td>
+            <%= render 'shared/edit_delete_buttons',
+              edit_path: edit_ticket_path(ticket),
+              delete_path: ticket_path(ticket)
+            %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
