@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_204859) do
+ActiveRecord::Schema.define(version: 2020_08_01_014502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 2020_07_31_204859) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "creator_id"
+    t.bigint "assigned_to_id"
+    t.index ["assigned_to_id"], name: "index_tickets_on_assigned_to_id"
+    t.index ["creator_id"], name: "index_tickets_on_creator_id"
     t.index ["project_id"], name: "index_tickets_on_project_id"
   end
 
@@ -55,4 +59,6 @@ ActiveRecord::Schema.define(version: 2020_07_31_204859) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "tickets", "users", column: "assigned_to_id"
+  add_foreign_key "tickets", "users", column: "creator_id"
 end

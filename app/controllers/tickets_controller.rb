@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :destroy, :edit, :update]
   before_action :set_projects, only: [:new, :create, :edit]
   before_action :set_tags, only: [:new, :create, :edit]
+  before_action :set_users, only: [:new, :create, :edit]
   before_action :require_user, except: [:show, :index]
 
   def index
@@ -9,6 +10,9 @@ class TicketsController < ApplicationController
   end
 
   def edit
+  end 
+
+  def show
   end
 
   def update
@@ -26,6 +30,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.creator = current_user
 
     if @ticket.save
       flash[:notice] = 'Created new ticket.'
@@ -44,7 +49,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:project_id, :name, :body, :status, tag_ids: [])
+    params.require(:ticket).permit(:project_id, :name, :body, :status, :assigned_to_id, tag_ids: [])
   end
 
   def set_ticket
@@ -57,5 +62,9 @@ class TicketsController < ApplicationController
 
   def set_tags
     @tags = Tag.all
+  end
+
+  def set_users
+    @users = User.all
   end
 end
