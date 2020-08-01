@@ -14,7 +14,7 @@
     <% tickets.each do |ticket| %>
       <tr>
         <td>
-          <%= ticket.name %>
+          <%= link_to ticket.name, ticket_path(ticket) %>
         </td>
         <td>
           assignee
