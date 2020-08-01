@@ -1,11 +1,11 @@
-<% placeholder ||= '' %>
-<% icon ||= '' %>
+<% placeholder ||= nil %>
+<% icon ||= nil %>
 <% input_class = "input #{obj.errors.messages[key].size > 0 && 'is-danger'}" %>
 
 <div class="field">
   <%= f.label key, class: "label" %>
 
-  <div class="<%= "control has-icons-right #{icon}" %>">
+  <div class="<%= "control has-icons-right #{icon && 'has-icons-left'}" %>">
     <%= f.send(field_type, key, class: input_class, placeholder: placeholder) %>
     <span class="icon is-small is-left">
       <i class="<%= icon %>"></i>

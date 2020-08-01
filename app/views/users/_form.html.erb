@@ -1,46 +1,50 @@
-<%= form_for @user do |f| %>
+<%= render 'shared/form_wrapper' do %>
 
-  <%= render 'shared/field',
-    f: f,
-    field_type: :text_field,
-    key: :name,
-    placeholder: 'Name',
-    icon: 'fas fa-user',
-    obj: @user
-  %>
+  <%= form_for @user do |f| %>
 
-  <%= render 'shared/field',
-    f: f,
-    field_type: :email_field,
-    key: :email,
-    placeholder: 'user@domain.com',
-    icon: 'fas fa-envelope',
-    obj: @user
-  %>
+    <%= render 'shared/field',
+      f: f,
+      field_type: :text_field,
+      key: :name,
+      placeholder: 'Name',
+      icon: 'fas fa-user',
+      obj: @user
+    %>
 
-  <%= render 'shared/field',
-    f: f,
-    field_type: :password_field,
-    key: :password,
-    icon: 'fas fa-lock',
-    obj: @user
-  %>
+    <%= render 'shared/field',
+      f: f,
+      field_type: :email_field,
+      key: :email,
+      placeholder: 'user@domain.com',
+      icon: 'fas fa-envelope',
+      obj: @user
+    %>
 
-  <%= render 'shared/field',
-    f: f,
-    field_type: :password_field,
-    key: :password_confirmation,
-    icon: 'fas fa-lock',
-    obj: @user
-  %>
- 
-  <div class="field is-grouped">
-    <div class="control">
-      <%= f.submit 'Register', class: 'button is-link' %>
+    <%= render 'shared/field',
+      f: f,
+      field_type: :password_field,
+      key: :password,
+      icon: 'fas fa-lock',
+      obj: @user
+    %>
+
+    <%= render 'shared/field',
+      f: f,
+      field_type: :password_field,
+      key: :password_confirmation,
+      icon: 'fas fa-lock',
+      obj: @user
+    %>
+  
+    <div class="field is-grouped">
+      <div class="control">
+        <%= f.submit 'Register', class: 'button is-link' %>
+      </div>
+      <div class="control">
+        <button type="button" onclick="window.location.href='<%= root_path %>'" class="button is-link is-light">Cancel</button>
+      </div>
     </div>
-    <div class="control">
-      <button type="button" onclick="window.location.href='<%= root_path %>'" class="button is-link is-light">Cancel</button>
-    </div>
-  </div>
+
+  <% end %>
 
 <% end %>

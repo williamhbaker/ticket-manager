@@ -1,30 +1,32 @@
-<%= form_for obj do |f| %>
+<%= render 'shared/form_wrapper' do %>
 
-  <%= render 'shared/field',
-    f: f,
-    field_type: :text_field,
-    key: :name,
-    placeholder: 'Project Name',
-    obj: obj
-  %>
+  <%= form_for obj do |f| %>
+    <%= render 'shared/field',
+      f: f,
+      field_type: :text_field,
+      key: :name,
+      placeholder: 'Project Name',
+      obj: obj
+    %>
 
-  <div class="field">
-    <%= f.label :description, class: "label" %>
+    <div class="field">
+      <%= f.label :description, class: "label" %>
 
-    <div class="control has-icons-right">
-      <%= f.text_area :description, class: 'textarea', placeholder: 'Project Description' %>
-      <% if obj.errors.messages[:description].size > 0 %>
-        <span class="icon is-small is-right">
-          <i class="fas fa-exclamation-triangle"></i>
-        </span>
+      <div class="control has-icons-right">
+        <%= f.text_area :description, class: 'textarea', placeholder: 'Project Description' %>
+        <% if obj.errors.messages[:description].size > 0 %>
+          <span class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        <% end %>
+      </div>
+
+      <% obj.errors.messages[:description].uniq.each do |msg| %>
+        <p class="help is-danger"><%= "#{:description.to_s.capitalize} #{msg}" %></p>
       <% end %>
     </div>
-
-    <% obj.errors.messages[:description].uniq.each do |msg| %>
-      <p class="help is-danger"><%= "#{:description.to_s.capitalize} #{msg}" %></p>
-    <% end %>
-  </div>
- 
-  <%= render 'shared/form_submit_controls', f: f %>
+  
+    <%= render 'shared/form_submit_controls', f: f %>
+  <% end %>
 
 <% end %>

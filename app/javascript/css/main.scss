@@ -4,3 +4,8 @@
 .select.is-multiple {
   height: auto;
 };
+
+.select,
+select {
+  width: 100%;
+};
