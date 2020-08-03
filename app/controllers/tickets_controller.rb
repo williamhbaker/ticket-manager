@@ -39,7 +39,7 @@ class TicketsController < ApplicationController
   def update
     if @ticket.update(ticket_params)
       flash[:notice] = "The ticket was updated."
-      redirect_to tickets_path
+      redirect_to ticket_path(@ticket)
     else
       render :edit
     end
