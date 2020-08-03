@@ -40,8 +40,8 @@
 
     <div class="field">
       <%= f.label :status, class: "label" %>
-        <div class="control is-expanded">
-          <div class="select is-fullwidth">
+      <div class="control is-expanded">
+        <div class="select is-fullwidth">
           <%= f.select :status,
             options_for_select(Ticket::STATUS_LIST, obj.status)
           %>

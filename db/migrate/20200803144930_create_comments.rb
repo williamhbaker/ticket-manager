@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration[6.0]
       t.belongs_to :ticket
       t.belongs_to :user
       t.string :body
+      t.timestamps
     end
   end
 end

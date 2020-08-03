@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_08_03_144930) do
     t.bigint "ticket_id"
     t.bigint "user_id"
     t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["ticket_id"], name: "index_comments_on_ticket_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
