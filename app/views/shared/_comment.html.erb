@@ -14,15 +14,19 @@
         <% end %>
       </p>
     </div>
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <%= link_to edit_ticket_comment_path(@ticket, comment), class: "level-item" do %>
-          <span class="icon is-small"><i class="fas fa-edit"></i></span>
-        <% end %>
-        <%= link_to ticket_comment_path(@ticket, comment), method: :delete, class: "level-item" do %>
-          <span class="icon is-small has-text-danger"><i class="fas fa-trash-alt"></i></span>
-        <% end %>
-      </div>
-    </nav>
+
+    <% if current_user == comment.user %>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <%= link_to edit_ticket_comment_path(@ticket, comment), class: "level-item" do %>
+            <span class="icon is-small"><i class="fas fa-edit"></i></span>
+          <% end %>
+          <%= link_to ticket_comment_path(@ticket, comment), method: :delete, class: "level-item" do %>
+            <span class="icon is-small has-text-danger"><i class="fas fa-trash-alt"></i></span>
+          <% end %>
+        </div>
+      </nav>
+    <% end %>
+
   </div>
 </article>

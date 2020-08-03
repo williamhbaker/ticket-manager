@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   before_action :require_user
-  before_action :set_ticket, only: [:edit, :create, :destroy, :update]
   before_action :set_comment, only: [:edit, :destroy, :update]
+  before_action :check_user, only: [:edit, :destroy, :update]
+  before_action :set_ticket, only: [:edit, :create, :destroy, :update]
 
   def edit
   end
@@ -53,5 +54,9 @@ class CommentsController < ApplicationController
 
   def ticket_params
     params.require(:ticket).permit(:status)
+  end
+
+  def check_user
+    require_same_user(@comment.user)
   end
 end

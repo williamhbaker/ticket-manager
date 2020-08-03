@@ -20,8 +20,8 @@
       </div>
     </div>
 
-  <% if logged_in? %>
-    <div class="level-item has-text-centered">
+    <% if logged_in? %>
+      <div class="level-item has-text-centered">
         <div>
           <%= render 'shared/edit_delete_buttons',
             edit_path: edit_ticket_path(@ticket),
@@ -29,8 +29,9 @@
           %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+
+  </div>
 
 <div class="content is-large">
 
@@ -42,9 +43,7 @@
   <h4>Comments</h4>
 
   <% if @ticket.comments.empty? %>
-
     <p class="is-italic">There are no comments for this ticket.</p>
-
   <% else %>
 
     <% @ticket.comments.each do |comment| %>
@@ -55,6 +54,8 @@
 
   <br>
 
-  <%= render 'shared/comment_form', obj: [@ticket, @comment] %>
+  <% if logged_in? %>
+    <%= render 'shared/comment_form', obj: [@ticket, @comment] %>
+  <% end %>
   
 </div>
