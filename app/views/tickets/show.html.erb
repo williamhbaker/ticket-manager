@@ -16,7 +16,7 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Assigned To</p>
-       <p class="title"><%= @ticket.assigned_to.name %></p>
+       <p class="title"><%= @ticket.assigned_to && @ticket.assigned_to.name %></p>
       </div>
     </div>
 

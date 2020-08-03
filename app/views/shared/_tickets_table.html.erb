@@ -17,7 +17,7 @@
           <%= link_to ticket.name, ticket_path(ticket) %>
         </td>
         <td>
-          <%= ticket.assigned_to.name %>
+          <%= ticket.assigned_to && ticket.assigned_to.name %>
         </td>
         <td>
           <%= format_status(ticket.status) %>
