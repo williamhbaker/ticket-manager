@@ -45,9 +45,14 @@
       <%= f.label :status, class: "label" %>
       <div class="control is-expanded">
         <div class="select is-fullwidth">
-          <%= f.select :status,
-            options_for_select(Ticket::STATUS_LIST, obj.status)
-          %>
+          <%= collection_select(
+            :ticket,
+            :status,
+            Ticket::STATUS_LIST,
+            :to_s,
+            :titleize,
+            { selected: obj.status }
+          ) %>
         </div>
       </div>
     </div>

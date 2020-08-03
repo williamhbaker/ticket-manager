@@ -1,6 +1,8 @@
 <%= render 'shared/heading', title_text: 'Tickets' %>
 
-<%= render 'ticket_filter' %>
+<% if @tickets != nil %>
+  <%= render 'ticket_filter' %>
+<% end %>
 
 <div class="content is-large"> 
   <% if @tickets == nil %>
