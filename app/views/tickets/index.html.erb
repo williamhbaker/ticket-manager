@@ -1,5 +1,7 @@
 <%= render 'shared/heading', title_text: 'Tickets' %>
 
+<%= render 'ticket_filter' %>
+
 <div class="content is-large">
   <%= render 'shared/tickets_table', tickets: @tickets %>
 

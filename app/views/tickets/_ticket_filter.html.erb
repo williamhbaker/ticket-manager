@@ -1,0 +1,84 @@
+<%= form_with(url: tickets_path, method: "get", class: "level", local: true) do %>
+
+  <div class="level-left">
+
+    <div class="level-item">
+      <p class="subtitle is-5">
+        Show Tickets From:
+      </p>
+    </div>
+    <div class="level-item">
+      <div class="field">
+        <div class="control">
+          <div class="select">
+            <%= collection_select(
+              :filter,
+              :project_id,
+              @projects,
+              :id,
+              :name,
+              { selected: @filter[:project_id], include_blank: "Any Project" }
+            ) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="level-item">
+      <p class="subtitle is-5">
+        With Status:
+      </p>
+    </div>
+    <div class="level-item">
+      <div class="field">
+        <div class="control">
+          <div class="select">
+            <%= collection_select(
+              :filter,
+              :status,
+              Ticket::STATUS_LIST,
+              :to_s,
+              :titleize,
+              { selected: @filter[:status], include_blank: "Any Status" }
+            ) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="level-item">
+      <p class="subtitle is-5">
+        Tagged:
+      </p>
+    </div>
+    <div class="level-item">
+      <div class="field">
+        <div class="control">
+          <div class="select">
+            <%= collection_select(
+              :filter,
+              :tag_id,
+              @tags,
+              :id,
+              :name,
+              { selected: @filter[:tag_id], include_blank: "Any Tag" }
+            ) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="level-right">
+    <p class="level-item">
+      <%= submit_tag("Filter", class: "button is-success") %>
+    </p>
+    
+    <p class="level-item">
+      <%= link_to "Clear", tickets_path, class: "button is-warning" %>
+    </p>
+  </div>
+
+<% end %>
