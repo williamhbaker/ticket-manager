@@ -4,10 +4,14 @@
   <p><%= @project.description %></p>
 
   <% if logged_in? %>
-    <%= render 'shared/edit_delete_buttons',
-      edit_path: edit_project_path(@project),
-      delete_path: project_path(@project)
-    %>
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <%= render 'shared/edit_delete_buttons',
+          edit_path: edit_project_path(@project),
+          delete_path: project_path(@project)
+        %>
+      </div>
+    </div>
   <% end %>
 
   <h6 class="mt-6">Tickets</h6>
