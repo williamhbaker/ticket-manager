@@ -17,4 +17,5 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "@fortawesome/fontawesome-free/css/all.css";
-import '../css/main.scss'
+import '../css/main.scss';
+import 'nav_control';
