@@ -1,0 +1,28 @@
+<% added_at = comment.created_at %>
+<% updated_at = comment.updated_at %>
+
+<article class="media">
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= comment.user.name %></strong> <small>added: <%= display_datetime(added_at) %></small>
+        <br>
+        <%= comment.body %>
+        <br>
+        <% if updated_at != added_at %>
+          <small>updated: <%= display_datetime(updated_at) %></small>
+        <% end %>
+      </p>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <%= link_to edit_ticket_comment_path(@ticket, comment), class: "level-item" do %>
+          <span class="icon is-small"><i class="fas fa-edit"></i></span>
+        <% end %>
+        <%= link_to ticket_comment_path(@ticket, comment), method: :delete, class: "level-item" do %>
+          <span class="icon is-small has-text-danger"><i class="fas fa-trash-alt"></i></span>
+        <% end %>
+      </div>
+    </nav>
+  </div>
+</article>

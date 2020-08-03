@@ -1,0 +1,41 @@
+<%= form_for obj do |f| %>
+  <div class="field">
+    <%= f.label :body,
+      obj[1].new_record? ? "New Comment" : "Edit Comment",
+      class: "label"
+    %>
+
+    <div class="control has-icons-right">
+      <%= f.text_area :body, class: 'textarea', placeholder: 'Add a comment...' %>
+      <% if obj[1].errors.messages[:body].size > 0 %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <% end %>
+    </div>
+
+    <% obj[1].errors.messages[:body].uniq.each do |msg| %>
+      <p class="help is-danger"><%= "#{:body.to_s.capitalize} #{msg}" %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ticket, "Update ticket status", class: "label" %>
+    <div class="control is-expanded">
+      <div class="select is-fullwidth">
+        <%= collection_select(
+          :ticket,
+          :status,
+          Ticket::STATUS_LIST,
+          :to_s,
+          :titleize,
+          { selected: obj[0].status }
+        ) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="control">
+    <%= f.submit 'Submit', class: 'button is-primary' %>
+  </div>
+<% end %>
