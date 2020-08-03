@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
   validates :name, presence: true
-  has_many :tags_tickets
+  has_many :tags_tickets, dependent: :destroy
   has_many :tickets, through: :tags_tickets
 
   scope :with_counts, -> {

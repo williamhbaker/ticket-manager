@@ -17,7 +17,7 @@ class Ticket < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   belongs_to :assigned_to, class_name: 'User', optional: true
 
-  has_many :tags_tickets
+  has_many :tags_tickets, dependent: :destroy
   has_many :tags, through: :tags_tickets
   has_many :comments, dependent: :destroy
 end
