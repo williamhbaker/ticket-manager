@@ -2,16 +2,20 @@
 
 <%= render 'ticket_filter' %>
 
-<div class="content is-large">
-  <%= render 'shared/tickets_table', tickets: @tickets %>
+<div class="content is-large"> 
+  <% if @tickets == nil %>
+    <p>There are currently no tickets in the system.</p>
+  <% elsif @tickets.empty? %>
+    <p>No tickets matching the filter criteria.</p>
+  <% else %>
+    <%= render 'shared/tickets_table', tickets: @tickets %>
+  <% end %>
 
   <% if logged_in? %>
-    <a href="<%= new_ticket_path %>" class="button is-primary">
-      <span class="icon is-small">
-        <i class="fas fa-plus"></i>
-      </span>
-      <span>New Ticket</span>
-    </a>
+    <%= render 'shared/new_resource_button',
+      path: new_ticket_path,
+      text: 'New Ticket'
+    %>
   <% end %>
 </div>
 

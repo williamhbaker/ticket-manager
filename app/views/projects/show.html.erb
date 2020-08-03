@@ -16,5 +16,10 @@
 
   <h6 class="mt-6">Tickets</h6>
 
-  <%= render 'shared/tickets_table', tickets: @project.tickets %>
+  <% if @project.tickets.empty? %>
+    <p>No tickets for <%= @project.name %>.</p>
+  <% else %>
+    <%= render 'shared/tickets_table', tickets: @project.tickets %>
+  <% end %>
+
 </div>

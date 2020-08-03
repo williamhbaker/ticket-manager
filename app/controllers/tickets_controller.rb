@@ -7,26 +7,8 @@ class TicketsController < ApplicationController
 
   def index
     tickets = Ticket.all
-
-    @filter = if params.has_key?(:filter)
-      {
-        project_id: params[:filter][:project_id] || '',
-        status: params[:filter][:status] || '',
-        tag_id: params[:filter][:tag_id] || ''
-      }
-    else
-      {
-        project_id: '',
-        status: '',
-        tag_id: ''
-      }
-    end
-
-    @tickets = tickets.filter do |ticket|
-      ticket.project_id.to_s.include?(@filter[:project_id]) &&
-      ticket.status.include?(@filter[:status]) &&
-      ticket.tags.index{ |t| t.id.to_s.include?(@filter[:tag_id]) }
-    end
+    @filter = parse_filter(params)
+    @tickets = tickets.empty? ? nil : filtered_tickets(tickets)
   end
 
   def edit
@@ -68,6 +50,31 @@ class TicketsController < ApplicationController
   end
 
   private
+
+  def filtered_tickets(all_tickets)
+    all_tickets.filter do |ticket|
+      ticket.project_id.to_s.include?(@filter[:project_id]) &&
+      ticket.status.include?(@filter[:status]) &&
+      (@filter[:tag_id] == '' ||
+        ticket.tags.index{ |t| t.id.to_s.include?(@filter[:tag_id]) })
+    end
+  end
+
+  def parse_filter(params)
+    if params.has_key?(:filter)
+      {
+        project_id: params[:filter][:project_id] || '',
+        status: params[:filter][:status] || '',
+        tag_id: params[:filter][:tag_id] || ''
+      }
+    else
+      {
+        project_id: '',
+        status: '',
+        tag_id: ''
+      }
+    end
+  end
 
   def ticket_params
     params.require(:ticket).permit(:project_id, :name, :body, :status, :assigned_to_id, tag_ids: [])

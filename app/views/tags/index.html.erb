@@ -1,14 +1,17 @@
 <%= render 'shared/heading', title_text: 'Tags' %>
 
 <div class="content is-large">
-  <%= render 'tags_table', tags: @tags, tickets: @tickets %>
+
+  <% if @tags.empty? %>
+    <p>There are currently no tags in the system.</p>
+  <% else %>
+    <%= render 'tags_table', tags: @tags, tickets: @tickets %>
+  <% end %>
 
   <% if logged_in? %>
-    <a href="<%= new_tag_path %>" class="button is-primary">
-      <span class="icon is-small">
-        <i class="fas fa-plus"></i>
-      </span>
-      <span>New Tag</span>
-    </a>
+    <%= render 'shared/new_resource_button',
+      path: new_tag_path,
+      text: 'New Tag'
+    %>
   <% end %>
 </div>

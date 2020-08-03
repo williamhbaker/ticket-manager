@@ -1,0 +1,21 @@
+<table class="table is-striped is-hoverable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class='has-text-centered'>Open Tickets</th>
+      <th class='has-text-centered'>Total Tickets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% projects.each do |proj| %>
+      <tr>
+        <td>
+          <p class="title is-4"><%= link_to proj.name, project_path(proj) %></p>
+          <p class="subtitle is-4"><%= proj.description %></p>
+        </td>
+        <td class='has-text-centered'><%= count_open_tickets(proj.tickets) %></td>
+        <td class='has-text-centered'><%= proj.tickets.size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

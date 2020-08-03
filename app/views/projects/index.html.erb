@@ -2,35 +2,17 @@
 
 <div class="content is-large">
 
-  <table class="table is-bordered is-striped is-fullwidth is-hoverable">
-    <thead>
-      <tr>
-        <th style="width: 50%">Name</th>
-        <th class='has-text-centered'>Open Tickets</th>
-        <th class='has-text-centered'>Total Tickets</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @projects.each do |proj| %>
-        <tr>
-          <td>
-            <p class="title is-4"><%= link_to proj.name, project_path(proj) %></p>
-            <p class="subtitle is-4"><%= proj.description %></p>
-          </td>
-          <td class='has-text-centered'><%= count_open_tickets(proj.tickets) %></td>
-          <td class='has-text-centered'><%= proj.tickets.size %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% if @projects.empty? %>
+    <p>There are currently no projects in the system.</p>
+  <% else %>
+    <%= render 'project_list', projects: @projects %>
+  <% end %>
 
   <% if logged_in? %>
-    <a href="<%= new_project_path %>" class="button is-primary">
-      <span class="icon is-small">
-        <i class="fas fa-plus"></i>
-      </span>
-      <span>New Project</span>
-    </a>
+    <%= render 'shared/new_resource_button',
+      path: new_project_path,
+      text: 'New Project'
+    %>
   <% end %>
 
 </div>
