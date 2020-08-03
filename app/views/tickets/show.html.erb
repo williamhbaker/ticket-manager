@@ -37,11 +37,10 @@
 
   <p><%= @ticket.body %></p>
 
-  <h4>Tags</h4>
+  <h6 class="mt-6">Tags</h6>
   <%= render 'shared/tag_list', tags: @ticket.tags %>
 
-  <h4>Comments</h4>
-
+  <h6 class="mt-6">Comments</h6>
   <% if @ticket.comments.empty? %>
     <p class="is-italic">There are no comments for this ticket.</p>
   <% else %>
