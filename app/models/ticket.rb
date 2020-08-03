@@ -18,4 +18,5 @@ class Ticket < ApplicationRecord
 
   has_many :tags_tickets
   has_many :tags, through: :tags_tickets
+  has_many :comments
 end

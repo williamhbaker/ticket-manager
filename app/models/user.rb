@@ -8,4 +8,5 @@ class User < ApplicationRecord
 
   has_many :created_tickets, :class_name => 'Ticket', :foreign_key => 'creator_id'
   has_many :assigned_tickets, :class_name => 'Ticket', :foreign_key => 'assigned_to_id'
+  has_many :comments
 end
