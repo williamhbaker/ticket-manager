@@ -44,7 +44,7 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @ticket.delete
+    @ticket.destroy
     flash[:notice] = 'Ticket deleted.'
     redirect_to tickets_path
   end

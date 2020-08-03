@@ -11,6 +11,9 @@
           %>
         </div>
       </div>
+      <% obj.errors.messages[:project_id].uniq.each do |msg| %>
+        <p class="help is-danger"><%= "#{:project_id.to_s.titleize} #{msg}" %></p>
+      <% end %>
     </div>
 
     <%= render 'shared/field',

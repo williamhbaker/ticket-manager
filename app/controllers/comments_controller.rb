@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.delete
+    @comment.destroy
     flash[:notice] = 'Comment deleted.'
     redirect_to ticket_path(@ticket)
   end

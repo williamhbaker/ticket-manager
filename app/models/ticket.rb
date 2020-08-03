@@ -3,6 +3,7 @@ class Ticket < ApplicationRecord
 
   validates :name, presence: true
   validates :body, presence: true
+  validates :project_id, presence: true
   validates :status, presence: true
   validate :valid_status
 
@@ -13,10 +14,10 @@ class Ticket < ApplicationRecord
   end
 
   belongs_to :project
-  belongs_to :creator, :class_name => 'User'
-  belongs_to :assigned_to, :class_name => 'User', optional: true
+  belongs_to :creator, class_name: 'User'
+  belongs_to :assigned_to, class_name: 'User', optional: true
 
   has_many :tags_tickets
   has_many :tags, through: :tags_tickets
-  has_many :comments
+  has_many :comments, dependent: :destroy
 end
