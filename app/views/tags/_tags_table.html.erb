@@ -15,7 +15,7 @@
           <%= tag.name %>
         </td>
         <td class="has-text-centered">
-          <%= tag.tickets.size %>
+          <%= link_to tag.tickets.size, controller: "tickets", 'filter[tag_id]': tag.id %>
         </td>
 
         <% if logged_in? %>

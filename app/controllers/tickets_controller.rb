@@ -10,9 +10,9 @@ class TicketsController < ApplicationController
 
     @filter = if params.has_key?(:filter)
       {
-        project_id: params[:filter][:project_id],
-        status: params[:filter][:status],
-        tag_id: params[:filter][:tag_id]
+        project_id: params[:filter][:project_id] || '',
+        status: params[:filter][:status] || '',
+        tag_id: params[:filter][:tag_id] || ''
       }
     else
       {
