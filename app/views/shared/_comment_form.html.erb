@@ -24,8 +24,8 @@
     <div class="control is-expanded">
       <div class="select is-fullwidth">
         <%= collection_select(
-          :comment,
-          :ticket_status,
+          :ticket,
+          :status,
           Ticket::STATUS_LIST,
           :to_s,
           :titleize,

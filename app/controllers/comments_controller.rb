@@ -8,12 +8,12 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
+      @ticket.update(ticket_params)
       flash[:notice] = "The comment was updated."
       redirect_to ticket_path(@ticket)
     else
       render :edit
     end
-
   end
 
   def create
@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
     @comment.ticket = @ticket
 
     if @comment.save
+      @ticket.update(ticket_params)
       flash[:notice] = 'Comment added.'
     else
       flash[:error] = 'Comment body cannot be blank.'
@@ -48,5 +49,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def ticket_params
+    params.require(:ticket).permit(:status)
   end
 end
