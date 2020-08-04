@@ -1,6 +1,12 @@
-<a href="<%= path %>" class="button is-primary">
-  <span class="icon is-small">
-    <i class="fas fa-plus"></i>
-  </span>
-  <span><%= text %></span>
-</a>
+<% if logged_in? %>
+  <a href="<%= path %>" class="button is-primary">
+    <span class="icon is-small">
+      <i class="fas fa-plus"></i>
+    </span>
+    <span>New <%= word.capitalize %></span>
+  </a>
+<% else %>
+  <p class="is-italic">
+    <small>You must be logged in to create new <%= word.downcase.pluralize %>.</small>
+  </p>
+<% end %>

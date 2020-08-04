@@ -8,10 +8,8 @@
     <%= render 'tags_table', tags: @tags, tickets: @tickets %>
   <% end %>
 
-  <% if logged_in? %>
-    <%= render 'shared/new_resource_button',
-      path: new_tag_path,
-      text: 'New Tag'
-    %>
-  <% end %>
+  <%= render 'shared/new_resource_button',
+    path: new_tag_path,
+    word: 'Tag'
+  %>
 </div>

@@ -8,11 +8,9 @@
     <%= render 'project_list', projects: @projects %>
   <% end %>
 
-  <% if logged_in? %>
-    <%= render 'shared/new_resource_button',
-      path: new_project_path,
-      text: 'New Project'
-    %>
-  <% end %>
+  <%= render 'shared/new_resource_button',
+    path: new_project_path,
+    word: 'Project'
+  %>
 
 </div>

@@ -13,11 +13,15 @@
     <%= render 'shared/tickets_table', tickets: @tickets %>
   <% end %>
 
-  <% if logged_in? && !@projects.empty? %>
+  <% if !@projects.empty? %>
     <%= render 'shared/new_resource_button',
       path: new_ticket_path,
-      text: 'New Ticket'
+    word: 'Ticket'
     %>
+  <% else %>
+    <p class="is-italic">
+      <small>Create a project in order to create tickets.</small>
+    </p>
   <% end %>
 </div>
 
