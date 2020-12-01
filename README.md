@@ -1,5 +1,5 @@
 # Ticket Manager
 
-This is a demonstration app using Ruby on Rails.
+This is a Ruby on Rails application for ticket management.  Includes data persistence via postgres and user registration/authentication.
 
 A live demo is available: [Click Here](https://ticket-manager-wbaker.herokuapp.com/)
