@@ -16,3 +16,7 @@ RUN rm -rf node_modules vendor
 RUN gem install rails bundler
 RUN bundle install
 RUN yarn install
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
